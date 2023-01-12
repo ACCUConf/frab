@@ -29,5 +29,6 @@
                   = event.room&.name
                   - if @conference.languages_including_subs.count > 1
                     = "(#{event.language})"
+                  = event.speakers.collect(&:public_name).join(",")
 
     %br.clear
