@@ -27,8 +27,10 @@
                   = event.subtitle
                 %i
                   = event.speakers.collect(&:public_name).join(",")
-                  = event.room&.name
-                  - if @conference.languages_including_subs.count > 1
-                    = "(#{event.language})"
+                  %br
+                  %br
+                    = event.room&.name
+                    - if @conference.languages_including_subs.count > 1
+                      = "(#{event.language})"
 
     %br.clear
