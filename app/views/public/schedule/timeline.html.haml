@@ -17,14 +17,14 @@
 
     .event-list
       - if events.count >  0
-        - events.sort_by { |a| [a.track&.name ? 1 : 0, a.track&.name] }.each do |event|
+        - events.sort_by { |a| [a.room&.rank ? 1 : 0, a.room&.rank ] }.each do |event|
           .event{class: track_class(event)}
             .event-wrapper
               .event-header
                 %h2= link_to event.title, public_event_path(id: event.id)
               .event-details
                 .subtitle
-                  = event.subtitle
+                  = truncate event.subtitle, length: 60, separator: /\w+/
                 %i
                   = event.speakers.collect(&:public_name).join(",")
                   %br
